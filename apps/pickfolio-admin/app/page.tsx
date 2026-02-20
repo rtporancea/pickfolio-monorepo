@@ -1,4 +1,4 @@
-import { APP_NAME } from '@pickfolio/shared';
+import { APP_NAME } from '@pickfolio/server';
 
 export default function AdminHome() {
     return (
