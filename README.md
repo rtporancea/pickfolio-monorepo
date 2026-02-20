@@ -1,37 +1,53 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Pickfolio
 
-## Getting Started
+Monorepo with two Next.js apps sharing a common `packages` folder.
 
-First, run the development server:
+## Structure
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+```
+pickfolio-monorepo/
+├── apps/
+│   ├── pickfolio/      # Main web app (port 3000)
+│   └── pickfolio-admin/    # Admin app (port 3001)
+├── packages/
+│   └── shared/       # @pickfolio/shared — code shared by both apps
+├── package.json      # Root workspace config
+└── .env.example
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Getting started
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+From the repo root:
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+```bash
+npm install
+```
 
-## Learn More
+Run both apps (in separate terminals):
 
-To learn more about Next.js, take a look at the following resources:
+```bash
+npm run dev:web     # http://localhost:3000
+npm run dev:admin   # http://localhost:3001
+```
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+Or build everything:
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+```bash
+npm run build
+npm run build:web
+npm run build:admin
+```
 
-## Deploy on Vercel
+## Shared package
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+Both apps depend on `@pickfolio-monorepo/shared`. Add shared utilities, types, or components in `packages/shared/src` and export them from `packages/shared/src/index.ts`, then import in either app:
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
-# pickfolio
+```ts
+import { APP_NAME, greet } from '@pickfolio-monorepo/shared';
+```
+
+Next.js is configured to transpile `@pickfolio-monorepo/shared` in both apps.
+
+## Environment
+
+Copy `.env.example` to `.env` in the root (or in each app if you prefer app-specific env). MongoDB and other vars are documented in `.env.example`.
