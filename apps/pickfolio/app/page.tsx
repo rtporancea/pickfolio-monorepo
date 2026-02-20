@@ -26,9 +26,12 @@ export default function Home() {
                     {loading && <p className="text-zinc-500 dark:text-zinc-400">Loading entry…</p>}
                     {error && <p className="text-red-600 dark:text-red-400">{error}</p>}
                     {!loading && !error && entries && (
-                        <article className="w-full rounded-lg border border-zinc-200 bg-zinc-50 p-6 dark:border-zinc-800 dark:bg-zinc-900">
+                        <>
                             {entries?.map((entry: PickEntry) => (
-                                <div key={entry.id}>
+                                <article
+                                    key={entry.id}
+                                    className="w-full rounded-lg border border-zinc-200 bg-zinc-50 p-6 dark:border-zinc-800 dark:bg-zinc-900"
+                                >
                                     <h2 className="text-xl font-semibold text-zinc-900 dark:text-zinc-100">
                                         {entry.artistName}
                                         {entry.bandName && ` — ${entry.bandName}`}
@@ -43,9 +46,9 @@ export default function Home() {
                                     {entry.description && (
                                         <p className="mt-2 text-zinc-700 dark:text-zinc-300">{entry.description}</p>
                                     )}
-                                </div>
+                                </article>
                             ))}
-                        </article>
+                        </>
                     )}
                 </div>
             </main>
