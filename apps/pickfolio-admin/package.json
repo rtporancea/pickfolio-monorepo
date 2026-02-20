@@ -9,20 +9,24 @@
         "lint": "eslint"
     },
     "dependencies": {
+        "@hookform/resolvers": "^5.2.2",
         "@pickfolio-monorepo/server": "*",
         "@pickfolio-monorepo/ui": "*",
         "next": "16.1.6",
         "react": "19.2.3",
-        "react-dom": "19.2.3"
+        "react-dom": "19.2.3",
+        "react-hook-form": "^7.71.1",
+        "tailwind-merge": "^3.5.0",
+        "zod": "^4.3.6"
     },
     "devDependencies": {
-        "dotenv-mono": "^1.5.1",
-        "dotenv": "^17.3.1",
         "@tailwindcss/postcss": "^4",
         "@types/node": "^20",
         "@types/react": "^19",
         "@types/react-dom": "^19",
         "babel-plugin-react-compiler": "1.0.0",
+        "dotenv": "^17.3.1",
+        "dotenv-mono": "^1.5.1",
         "eslint": "^9",
         "eslint-config-next": "16.1.6",
         "tailwindcss": "^4",

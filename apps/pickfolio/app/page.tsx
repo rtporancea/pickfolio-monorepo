@@ -1,7 +1,8 @@
 'use client';
 
 import { useEffect, useState } from 'react';
-import { getPicks, type PickEntry } from '@pickfolio/server';
+import { getPicks } from '@pickfolio/server';
+import type { PickEntry } from '@pickfolio/server';
 
 export default function Home() {
     const [entries, setEntries] = useState<PickEntry[] | null>(null);

@@ -1,2 +1,2 @@
 export { getPicks } from './pick-entries-actions';
-export type { PickEntry } from './db';
+export { type PickEntry } from './prisma';

@@ -1,5 +1,4 @@
 import { PrismaPg } from '@prisma/adapter-pg';
-import type { PickEntry } from './generated/prisma/client';
 import { PrismaClient } from './generated/prisma/client';
 
 const connectionString = process.env.DATABASE_URL;
@@ -10,11 +9,5 @@ if (!connectionString) {
 const adapter = new PrismaPg({ connectionString });
 const prisma = new PrismaClient({ adapter });
 
-/**
- * Returns all PickEntry records from the database.
- */
-export async function fetchPicks(): Promise<PickEntry[]> {
-    return prisma.pickEntry.findMany();
-}
-
-export type { PickEntry };
+export { prisma };
+export type { PickEntry } from './generated/prisma/client';
