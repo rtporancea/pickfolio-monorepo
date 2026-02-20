@@ -23,6 +23,7 @@ export default function AdminHome() {
             form={form}
             formSubmitHandler={async (data: z.infer<typeof addPickViewFormSchema>) => {
                 await addPick(data);
+                form.reset();
             }}
         />
     );
