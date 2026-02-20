@@ -1,9 +1,2 @@
-/**
- * @pickfolio/shared — code shared between app-web and app-admin
- */
-
-export const APP_NAME = 'Pickfolio';
-
-export function greet(name: string): string {
-    return `Hello, ${name}!`;
-}
+export { getPicks } from './pick-entries-actions';
+export type { PickEntry } from './db';
