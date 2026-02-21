@@ -7,6 +7,7 @@ import { Form } from '../form/form';
 import { FormInput } from '../form/form-input';
 import { FormViewProps } from '../form/form-types';
 import { GridContainer, VerticalLayout } from '../layouts/layouts';
+import { FormDatePicker } from '../form/form-date-picker';
 
 export const addPickViewFormSchema = z.object({
     artistName: z.string().trim(),
@@ -26,16 +27,21 @@ export function AddPickView(props: AddPickViewProps) {
         <GridContainer>
             <Form {...form}>
                 <form onSubmit={form.handleSubmit(formSubmitHandler)} className="w-full">
-                    <VerticalLayout variant="normal" className="p-6 desktop:p-10 tablet:col-span-1">
+                    <VerticalLayout variant="normal">
                         <Heading1>Add Pick</Heading1>
-                        <FormInput name="artistName" label="Artist Name" form={form} />
-                        <FormInput name="bandName" label="Band Name" form={form} />
-                        <FormInput name="location" label="Location" form={form} />
-                        <FormInput name="eventName" label="Event Name" form={form} />
-                        <FormInput name="description" label="Description" form={form} />
-                    </VerticalLayout>
+                        <VerticalLayout>
+                            <FormInput name="artistName" label="Artist Name" form={form} />
+                            <FormInput name="bandName" label="Band Name" form={form} />
+                            <FormInput name="location" label="Location" form={form} />
+                            <FormInput name="eventName" label="Event Name" form={form} optional />
+                            <FormDatePicker name="date" label="Date" form={form} />
+                            <FormInput name="description" label="Description" form={form} optional />
+                        </VerticalLayout>
 
-                    <Button type="submit">Add Pick</Button>
+                        <Button type="submit" className="w-full sm:w-fit sm:self-end">
+                            Add Pick
+                        </Button>
+                    </VerticalLayout>
                 </form>
             </Form>
         </GridContainer>

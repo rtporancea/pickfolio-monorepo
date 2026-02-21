@@ -19,7 +19,12 @@ export const FormInput = <T extends FieldValues>(props: FormElementProps<T>) => 
 
             return (
                 <FormItem className={props.className}>
-                    {props.label && <FormLabel>{props.label + (props.optional ? '' : ' *')}</FormLabel>}
+                    {props.label && (
+                        <FormLabel className="gap-1">
+                            {props.label}
+                            <span className="text-destructive">{props.optional ? '' : ' *'}</span>
+                        </FormLabel>
+                    )}
 
                     <div className="relative w-full">
                         <FormControl>
